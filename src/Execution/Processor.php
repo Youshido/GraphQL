@@ -8,6 +8,8 @@
 namespace Youshido\GraphQL\Execution;
 
 
+use Youshido\GraphQL\Exception\Parser\InvalidRequestException;
+use Youshido\GraphQL\Exception\Parser\SyntaxErrorException;
 use Youshido\GraphQL\Exception\ResolveException;
 use Youshido\GraphQL\Execution\Container\Container;
 use Youshido\GraphQL\Execution\Context\ExecutionContext;
@@ -564,6 +566,13 @@ class Processor
         });
     }
 
+    /**
+     * @param mixed $payload
+     * @param array $variables
+     *
+     * @throws InvalidRequestException
+     * @throws SyntaxErrorException
+     */
     protected function parseAndCreateRequest($payload, $variables = [])
     {
         if (empty($payload)) {

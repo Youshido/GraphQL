@@ -62,18 +62,6 @@ class Request
         }
 
         if (array_key_exists('variableReferences', $data)) {
-            foreach ($data['variableReferences'] as $ref) {
-                if (!array_key_exists($ref->getName(), $variables)) {
-                    /** @var Variable $variable */
-                    $variable = $ref->getVariable();
-                    if ($variable->hasDefaultValue()) {
-                        $variables[$variable->getName()] = $variable->getDefaultValue()->getValue();
-                        continue;
-                    }
-                    throw new InvalidRequestException(sprintf("Variable %s hasn't been submitted", $ref->getName()), $ref->getLocation());
-                }
-            }
-
             $this->addVariableReferences($data['variableReferences']);
         }
 

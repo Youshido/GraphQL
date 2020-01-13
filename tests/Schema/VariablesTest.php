@@ -140,7 +140,7 @@ class VariablesTest extends \PHPUnit_Framework_TestCase
                 [
                     'errors' => [
                         [
-                            'message'   => 'Fragment "someFragment" not defined in query',
+                            'message'   => 'Fragment "someFragment" is not defined in query',
                             'locations' => [
                                 [
                                     'line'   => 3,
