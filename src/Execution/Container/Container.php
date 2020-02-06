@@ -8,7 +8,9 @@
 
 namespace Youshido\GraphQL\Execution\Container;
 
-class Container implements ContainerInterface
+use \Psr\Container\ContainerInterface as PsrContainerInterface;
+
+class Container implements ContainerInterface, PsrContainerInterface
 {
 
     private $keyset   = [];
