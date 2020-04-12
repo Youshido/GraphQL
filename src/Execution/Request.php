@@ -66,6 +66,13 @@ class Request
                 if (!array_key_exists($ref->getName(), $variables)) {
                     /** @var Variable $variable */
                     $variable = $ref->getVariable();
+                    /**
+                     * If $variable is null, then it was not declared in the operation arguments
+                     * @see https://graphql.org/learn/queries/#variables
+                     */
+                    if (is_null($variable)) {
+                        throw new InvalidRequestException(sprintf("Variable %s hasn't been declared", $ref->getName()), $ref->getLocation());
+                    }
                     if ($variable->hasDefaultValue()) {
                         $variables[$variable->getName()] = $variable->getDefaultValue()->getValue();
                         continue;
