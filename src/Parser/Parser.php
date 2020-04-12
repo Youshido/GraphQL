@@ -114,7 +114,10 @@ class Parser extends Tokenizer
             $this->eatMulti([Token::TYPE_COMMA]);
 
             $operation = $this->parseBodyItem($type, true);
-            $operation->setDirectives($directives);
+            $operation->setDirectives(array_merge(
+                $directives,
+                $operation->getDirectives()
+            ));
 
             $fields[] = $operation;
         }
