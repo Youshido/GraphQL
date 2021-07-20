@@ -19,8 +19,8 @@ class Field extends AbstractAst implements FieldInterface
     /** @var string */
     private $name;
 
-    /** @var null|string */
-    private $alias = null;
+    /** @var string */
+    private $alias;
 
     /**
      * @param string   $name

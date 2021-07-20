@@ -22,7 +22,7 @@ class TypeDefinitionField extends AbstractField
 
     use TypeCollectorTrait;
 
-    public function resolve($value = null, array $args, ResolveInfo $info)
+    public function resolve($value, array $args, ResolveInfo $info)
     {
         $schema = $info->getExecutionContext()->getSchema();
         $this->collectTypes($schema->getQueryType());
